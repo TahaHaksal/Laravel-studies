@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\PaymentGateway\Payment;
 use Illuminate\Support\Facades\App;
@@ -15,7 +16,9 @@ use App\Http\Controllers\Ex13Controller;
 use App\Http\Controllers\Ex16Controller;
 use App\Http\Controllers\Ex17Controller;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -188,3 +191,15 @@ Route::get('/get-students', [StudentController::class, 'getStudents']);
 Route::get('/get-student/{id}', [StudentController::class, 'getStudent']);
 
 Route::get('/get-students-between/{id1}/{id2}', [StudentController::class, 'getStudentsinBetween'])->where('id1', '[0-9]+')->where('id2', '[0-9]+');
+
+Route::get('/insert-record', [UserController::class, 'insertRecord']);
+
+Route::get('/get-phone-from-user/{id}', [UserController::class, 'getPhoneByUser']);
+
+Route::get('/get-user-from-phone/{id}', [UserController::class, 'getUserByPhone']);
+
+Route::get('/put-employee', [EmployeeController::class, 'insertEmployee']);
+
+Route::get('/employee-excel', [EmployeeController::class, 'exportIntoExcel']);
+
+Route::get('/employee-csv', [EmployeeController::class, 'exportIntoCSV']);
